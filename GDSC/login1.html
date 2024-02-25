@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustain Solutions</title>
+    <style>
+        /* Your existing styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #17a2b8;
+        }
+
+        header {
+            background-color: #17a2b8;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+        }
+
+        #logo {
+            max-width: 400px;
+            max-height: 400px;
+            margin-bottom: 10px;
+        }
+
+        #signup-button {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #17a2b8;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 50px;
+        }
+
+        .login-block {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #17a2b8;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .error-message {
+            color: red;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.jpg" alt="Sustain Solutions Logo" id="logo">
+        <h1>Sustain Solutions</h1>
+    </header>
+
+    <main>
+        <div class="login-block">
+            <h2>User Login</h2>
+            <form id="userLoginForm" onsubmit="return validateUserLogin()">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Login</button>
+                <div id="userLoginError" class="error-message"></div>
+            </form>
+        </div>
+        <div class="login-block">
+            <h2>Authority Login</h2>
+            <form id="authorityLoginForm" onsubmit="return validateAuthorityLogin()">
+                <label for="authorityUsername">Username:</label>
+                <input type="text" id="authorityUsername" name="authorityUsername" required>
+
+                <label for="authority-password">Password:</label>
+                <input type="password" id="authority-password" name="authority-password" required>
+
+                <button type="submit">Login</button>
+                <div id="authorityLoginError" class="error-message"></div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        function validateUserLogin() {
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const userLoginError = document.getElementById('userLoginError');
+
+            // Check for valid username and password
+            if (
+                (usernameInput.value === '22b01a05j3' && passwordInput.value === 'jyothi') ||
+                (usernameInput.value === '22b01a05c0' && passwordInput.value === 'noushin') ||
+                (usernameInput.value === '22b01a05f3' && passwordInput.value === 'srija') ||
+                (usernameInput.value === '22b01a0458' && passwordInput.value === 'jahanavi')
+            ) {
+                // Redirect to the next page
+                window.location.href = "issue.html";
+                return false; // Prevent the form from submitting
+            } else {
+                userLoginError.textContent = 'Invalid username or password';
+                return false;
+            }
+        }
+
+        function validateAuthorityLogin() {
+            const authorityUsernameInput = document.getElementById('authorityUsername');
+            const authorityPasswordInput = document.getElementById('authority-password');
+            const authorityLoginError = document.getElementById('authorityLoginError');
+
+            // Check for valid authority username and password
+            if (
+                (authorityUsernameInput.value === 'authority1' && authorityPasswordInput.value === '1234') ||
+                (authorityUsernameInput.value === 'authority2' && authorityPasswordInput.value === '12345')
+            ) {
+                // Redirect to the next page or perform other actions
+                window.location.href = "con.html";
+                return false; // Prevent the form from submitting
+            } else {
+                authorityLoginError.textContent = 'Invalid authority username or password';
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

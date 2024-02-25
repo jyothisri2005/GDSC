@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Issue Tracker</title>
+    <style>
+        body {
+            background-color: #17a2b8; /* Replace with your desired color code */
+            color: white; /* Set text color to white */
+        }
+
+        h5 {
+            color: black; /* Set heading color to black */
+        }
+	h2 {
+            color: black; /* Set heading color to black */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Reported Issue</h2>
+
+        <form id="issueForm" onsubmit="submitForm(event)">
+            <div class="form-group">
+                <label for="username"><h5>Username: </h5></label>
+                <p class="form-control-static" id="usernameLabel">John Doe</p>
+            </div>
+
+            <div class="form-group">
+                <label for="issueHeading"><h5>Issue Heading:</h5></label>
+                <p class="form-control-static" id="issueHeadingLabel">Water Issue</p>
+            </div>
+
+            <div class="form-group">
+                <label for="issueImage"><h5>Attach Photo: <br></h5>
+                <img src="contaminated.jpeg" alt="Default Image" class="img-thumbnail"> </label>
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="issueResolved" required>
+                <label class="form-check-label" for="issueResolved">Issue Resolved</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function submitForm(event) {
+            event.preventDefault(); // Prevents the form from submitting by default
+
+            var checkbox = document.getElementById('issueResolved');
+
+            if (checkbox.checked) {
+                // Display a popup message
+                alert('Issue resolved successfully!');
+            } else {
+                alert('Please resolve the issue before submitting.');
+            }
+        }
+    </script>
+</body>
+</html>

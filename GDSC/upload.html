@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UPLOAD HERE</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <style>
+    /* Add custom styles here */
+    body {
+      padding: 20px;
+    }
+    .wrong-mark {
+      color: #dc3545;
+      font-size: 20px;
+      cursor: pointer;
+    }
+    .error-message {
+      color: #dc3545;
+      margin-top: 5px;
+    }
+  </style>
+  <!-- Content-Security-Policy meta tag without multiplication mark -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://code.jquery.com https://cdn.jsdelivr.net https://stackpath.bootstrapcdn.com 'unsafe-inline'; style-src 'self' https://stackpath.bootstrapcdn.com 'unsafe-inline';">
+</head>
+<body>
+
+<div class="container">
+  <h1>UPLOAD HERE</h1>
+  
+  <!-- File Upload Section -->
+  <div class="form-group">
+    <label for="fileInput">Upload Photo:</label>
+    <div class="input-group">
+      <input type="file" class="form-control-file" id="fileInput" accept="image/*" onchange="getLocation()" required>
+      <div class="input-group-append">
+      </div>
+    </div>
+    <small class="form-text text-muted">Allowed file types: Images</small>
+    <div id="photoError" class="error-message"></div>
+  </div>
+
+  <!-- Location Entry Section -->
+  <div class="form-group">
+    <label for="location">Enter the location of the issue:</label>
+    <input type="text" class="form-control" id="location" placeholder="E.g., City, Area" required>
+    <div id="locationError" class="error-message"></div>
+  </div>
+
+  <!-- Comment Section -->
+  <div class="form-group">
+    <label for="comment">Comment:</label>
+    <textarea class="form-control" id="comment" rows="3" placeholder="Enter your comment"></textarea>
+    <div id="commentError" class="error-message"></div>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+</div>
+
+<!-- Bootstrap JS and jQuery (required for some Bootstrap features) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Font Awesome JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"></script>
+
+<script>
+  // Get location when a file is selected
+  function getLocation() {
+    // You can still include geolocation functionality if needed
+    // For now, let's keep it simple
+  }
+
+  // Delete the uploaded file
+  function deleteFile() {
+    const fileInput = document.getElementById('fileInput');
+    fileInput.value = ''; // Clear the file input
+  }
+
+  // Validate and submit the form
+  function submitForm() {
+    const fileInput = document.getElementById('fileInput');
+    const locationInput = document.getElementById('location').value;
+    const commentInput = document.getElementById('comment').value;
+    const locationError = document.getElementById('locationError');
+    const commentError = document.getElementById('commentError');
+    const photoError = document.getElementById('photoError');
+
+    // Reset previous error messages
+    locationError.textContent = '';
+    commentError.textContent = '';
+    photoError.textContent = '';
+
+    // Validate photo
+    if (!fileInput.files || !fileInput.files[0]) {
+      photoError.textContent = 'Please upload a photo.';
+    }
+
+    // Validate location
+    if (!locationInput) {
+      locationError.textContent = 'Please enter the location.';
+    }
+
+    // Validate comment
+    if (!commentInput) {
+      commentError.textContent = 'Please enter your comment.';
+    }
+
+    // Check if there are any validation errors
+    if (!fileInput.files || !fileInput.files[0] || !locationInput || !commentInput) {
+      return;
+    }
+
+    // Your logic to submit the form
+    alert("Issue submitted successfully!");
+  }
+</script>
+
+</body>
+</html>

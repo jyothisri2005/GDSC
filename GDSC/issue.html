@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropdown Box with Others Section and Comments</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #17a2b8; /* Replace with your desired color code */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
+  <form onsubmit="return handleSubmit()">
+    <div class="form-group">
+      <label for="issuesDropdown"><h4>Select an issue: </h4></label>
+      <select class="form-control" id="issuesDropdown" onchange="showOthersSection()" required>
+        <option value="">Select</option>
+        <option value="plastic pollution">plastic pollution</option>
+        <option value="drainage blockage">drainage blockage</option>
+        <option value="staginate water">staginate water</option>
+        <option value="leakage of taps">leakage of taps</option>
+        <option value="food wastage">food wastage</option>
+        <option value="others">Others</option>
+      </select>
+    </div>
+    
+    <div class="form-group others-section" id="othersSection" style="display: none;">
+      <label for="otherComments"><h4>Additional Comments: </h4></label>
+      <textarea class="form-control" id="otherComments" rows="3" required></textarea>
+    </div>
+    
+    <div class="form-group">
+      <label for="comments"><h4>Description : </h4></label>
+      <textarea class="form-control" id="comments" rows="5" required></textarea>
+    </div>
+    
+    <button type="submit" class="btn btn-primary"> Next </button>
+  </form>
+</div>
+
+<script>
+  // Function to show/hide the others section based on dropdown selection
+  function showOthersSection() {
+    var dropdown = document.getElementById("issuesDropdown");
+    var othersSection = document.getElementById("othersSection");
+    if (dropdown.value === "others") {
+      othersSection.style.display = "block";
+      document.getElementById("otherComments").setAttribute("required", "required");
+    } else {
+      othersSection.style.display = "none";
+      document.getElementById("otherComments").removeAttribute("required");
+    }
+  }
+
+  // Function to handle form submission
+  function handleSubmit() {
+    // Check if each required field is filled
+    var dropdown = document.getElementById("issuesDropdown");
+    var otherComments = document.getElementById("otherComments");
+    var comments = document.getElementById("comments");
+
+    if (!dropdown.checkValidity()) {
+      alert("Please select an issue.");
+      return false;
+    }
+
+    if (dropdown.value === "others" && !otherComments.checkValidity()) {
+      alert("Please provide additional comments.");
+      return false;
+    }
+
+    if (!comments.checkValidity()) {
+      alert("Please provide a description.");
+      return false;
+    }
+
+    // Redirect to the next page
+    window.location.href = "upload.html";
+
+    // Prevent the form from submitting in the default way
+    return false;
+  }
+</script>
+
+</body>
+</html>
